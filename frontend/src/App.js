@@ -5,7 +5,7 @@ import FilterSortControls from './components/FilterSortControls';
 import axios from 'axios';
 import './App.css';
 
-const API_BASE = 'http://localhost:4000';
+const API_BASE = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
 const PENDING_STORAGE_KEY = 'expenseTracker:pendingExpense';
 const INR_SYMBOL = '\u20B9';
 

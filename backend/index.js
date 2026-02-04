@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -5,10 +6,15 @@ import { Low, JSONFile } from 'lowdb';
 import { nanoid } from 'nanoid';
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = Number(process.env.BACKEND_PORT || process.env.PORT || 4000);
+const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
 const HOST = '0.0.0.0';
 
-app.use(cors());
+app.use(
+  cors({
+    origin: FRONTEND_URL
+  })
+);
 app.use(bodyParser.json({ limit: '10kb' }));
 
 // Setup DB
