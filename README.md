@@ -32,18 +32,6 @@ Each expense record includes:
 
 ## Running Locally
 
-**Backend**
-```bash
-cd expense-tracker/backend
-npm install
-node index.js
-```
+**Backend** - https://expense-tracker-backend-jhfk.onrender.com
 
-**Frontend**
-```bash
-cd expense-tracker/frontend
-npm install
-npm start
-```
-
-The frontend expects the API at `http://localhost:4000`.
+**Frontend** - https://expense-tracker-frontend-icuq.onrender.com/
