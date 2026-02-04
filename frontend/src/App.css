@@ -1,38 +1,211 @@
-.App {
-  text-align: center;
+:root {
+  --ink: #1d1c1a;
+  --muted: #6a5f56;
+  --panel: #fff7ee;
+  --panel-strong: #f0e3d6;
+  --accent: #d9772a;
+  --accent-strong: #b65b19;
+  --border: #e3d3c3;
+  --bg: #f6efe7;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #fffaf3, var(--bg));
+  color: var(--ink);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 20px 60px;
+}
+
+.app__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.app__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.app__subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  max-width: 520px;
+}
+
+.app__panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 40px rgba(35, 25, 12, 0.08);
+}
+
+.form {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form__row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+input,
+select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(217, 119, 42, 0.4);
+  border-color: var(--accent);
+}
+
+.primary-button {
+  align-self: flex-start;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.primary-button:hover {
+  background: var(--accent-strong);
+}
+
+.primary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.controls {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.link-button {
+  border: none;
+  background: none;
+  color: var(--accent-strong);
+  padding: 0;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: center;
+}
+
+.status {
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
 }
 
-.App-link {
-  color: #61dafb;
+.status--error {
+  background: #fce8da;
+  color: #8b3c0d;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.status--info {
+  background: #f3e8da;
+  color: var(--muted);
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 18px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 14px;
+}
+
+.expense-table th {
+  background: var(--panel-strong);
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.expense-table tr:last-child td {
+  border-bottom: none;
+}
+
+.expense-table__amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--panel-strong);
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .app__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .total {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 }

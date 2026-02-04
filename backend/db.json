@@ -1,0 +1,15 @@
+{
+  "expenses": [
+    {
+      "id": "N6s39GX--19jxG93o05Mb",
+      "amount": 50000,
+      "category": "Travel",
+      "description": "daily",
+      "date": "2026-02-05",
+      "created_at": "2026-02-04T19:51:54.495Z"
+    }
+  ],
+  "idempotency": {
+    "6c906139-e8e5-4987-8b10-b3849c2c8596": "N6s39GX--19jxG93o05Mb"
+  }
+}
