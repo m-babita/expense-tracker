@@ -5,7 +5,8 @@ import { Low, JSONFile } from 'lowdb';
 import { nanoid } from 'nanoid';
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
+const HOST = '0.0.0.0';
 
 app.use(cors());
 app.use(bodyParser.json({ limit: '10kb' }));
@@ -128,4 +129,4 @@ app.get('/expenses', async (req, res) => {
   res.json(expenses);
 });
 
-app.listen(PORT, () => console.log(`Backend running on http://localhost:${PORT}`));
+app.listen(PORT, HOST, () => console.log(`Backend running on http://${HOST}:${PORT}`));

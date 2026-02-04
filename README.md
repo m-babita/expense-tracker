@@ -24,7 +24,6 @@ Each expense record includes:
 ## API
 `POST /expenses`
 - Body: `amount`, `category`, `description`, `date`
-- Optional header: `Idempotency-Key` (recommended)
 
 `GET /expenses`
 - Query: `category` (case-insensitive exact match)
@@ -48,17 +47,3 @@ npm start
 ```
 
 The frontend expects the API at `http://localhost:4000`.
-
-## Design Decisions
-- **Money handling**: Amounts are stored as integer paise to avoid floating-point errors.
-- **Idempotency**: The API supports `Idempotency-Key` headers. The UI generates a request ID and stores the pending payload in `localStorage` to retry after refreshes or transient failures.
-- **Storage**: lowdb JSON file keeps setup minimal while still persisting data between restarts.
-
-## Trade-offs
-- Chose lowdb over a relational DB to stay lightweight and quick to run locally.
-- Category filtering uses exact matches to keep behavior predictable and simple.
-
-## Not Implemented (Intentionally)
-- Automated tests (would be next for backend validation + idempotency)
-- Auth or multi-user support
-- A per-category summary view (easy follow-on)
